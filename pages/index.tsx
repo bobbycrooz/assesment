@@ -23,7 +23,6 @@ const Home = (props: { isMobile: any }) => {
 	async function getMovies() {
 		// @ts-ignore
 		const resp = await moviesBySeries();
-		console.log(resp);
 		// @ts-ignore
 		if (resp.search) {
 			// @ts-ignore
@@ -37,7 +36,6 @@ const Home = (props: { isMobile: any }) => {
 		if (searchParam.length > 3) {
 			// @ts-ignore
 			const resp = await moviesByMovieType(searchParam);
-			console.log(resp);
 			// @ts-ignore
 			if (resp.search) {
 				// @ts-ignore
@@ -92,7 +90,7 @@ const Home = (props: { isMobile: any }) => {
 							<h1>fetching movie list ..</h1>
 						</div>
 					) : (
-						<MovieListCarousel movies={movies} categoryName="Horror Category" />
+						<MovieListCarousel movies={movies} categoryName="Movies by series" />
 					)}
 				</div>
 			</main>
@@ -103,7 +101,7 @@ const Home = (props: { isMobile: any }) => {
 function MovieListCarousel({ categoryName, movies }: { categoryName?: Name; movies: any }) {
 	return (
 		<div className="movie_category_component  stack-md">
-			<h1 className="title text-xl font-dm-sans font-medium">{categoryName}</h1>
+			<h1 className="title text-2xl font-dm-sans font-medium">{categoryName}</h1>
 
 			<div className="slider_container h-[300px] ">
 				<Swiper
@@ -117,7 +115,8 @@ function MovieListCarousel({ categoryName, movies }: { categoryName?: Name; movi
 						},
 						// when window width is >= 768px
 						768: {
-							slidesPerView: 4.5
+							slidesPerView: 4.5,
+							spaceBetween: 10
 						}
 					}}
 					spaceBetween={20}
@@ -136,7 +135,7 @@ function MovieListCarousel({ categoryName, movies }: { categoryName?: Name; movi
 							<img
 								src={item.Poster}
 								alt=""
-								className="   rounded-lg full bg-pri h-[300px]"
+								className=" w-full  rounded-lg full bg-pri h-[300px]"
 							/>
 						</SwiperSlide>
 					))}
