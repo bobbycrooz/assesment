@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 
 const Home = (props: { isMobile: any }) => {
 	const [movies, setMovies] = useState();
+	const [searchParam, setSearchParam] = useState('');
 
 	async function getMovies() {
 		// @ts-ignore
@@ -28,6 +29,23 @@ const Home = (props: { isMobile: any }) => {
 			// @ts-ignore
 			setMovies(resp.search.Search);
 		}
+	}
+
+	async function searchMovies(e: any) {
+		e.preventDefault();
+
+		if (searchParam.length > 3) {
+			// @ts-ignore
+			const resp = await moviesByMovieType(searchParam);
+			console.log(resp);
+			// @ts-ignore
+			if (resp.search) {
+				// @ts-ignore
+				setMovies(resp.search.Search);
+			}
+		}
+
+		return;
 	}
 
 	useEffect(() => {
@@ -55,20 +73,27 @@ const Home = (props: { isMobile: any }) => {
 
 			<main className="movie_actions bg-white w-full pl-11 stack-xl my-11">
 				<div className="search_box  w-full pr-11">
-					<form className="input_group stack-sm">
+					<form onSubmit={searchMovies} className="input_group stack-sm">
 						<label htmlFor="serach">Search</label>
 						<input
 							type="search"
 							name="search"
 							id=""
+							onChange={(e) => setSearchParam(e.target.value)}
 							placeholder="series"
-							className="border h-12 border-black w-full"
+							className="border h-12 border-black w-full p-3 text-lg"
 						/>
 					</form>
 				</div>
 
 				<div className="movie_section stack-lg">
-					<MovieListCarousel movies={movies} categoryName="Horror Category" />
+					{!movies ? (
+						<div className="centered w-full h-11">
+							<h1>fetching movie list ..</h1>
+						</div>
+					) : (
+						<MovieListCarousel movies={movies} categoryName="Horror Category" />
+					)}
 				</div>
 			</main>
 		</div>
