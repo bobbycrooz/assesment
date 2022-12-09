@@ -1,0 +1,82 @@
+
+
+.fadeIn {
+    animation: slideUpIn;
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  .slideInLeft {
+    animation: slideLeft;
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  .strictFadeIn {
+    animation: fadingIn;
+    animation-duration: 400ms;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  .icon-box {
+    /* border: 1px solid red; */
+    width: 24px;
+  }
+
+  .flash{
+    animation: flash-blink 500ms ease 0ms infinite normal none;
+  }
+  
+  
+  /* animations */
+  @keyframes fadingIn {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUpIn {
+    0% {
+      opacity: 0.6;
+      transform: translateY(20px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  
+  @keyframes slideLeft {
+    0% {
+      opacity: 0.6;
+      transform: translateX(20px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes flash-blink {
+    0% {
+      opacity: 0.2;
+      transform: scale(1.2);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      
+    }
+  }
+  

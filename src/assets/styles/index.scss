@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// partials
+@import '../fonts/font';
+@import 'partials/animate';
+@import 'components/button';
+
+// components
+
+// widgets
+
+// pages
+@import 'pages/home.scss';
+
+body {
+	background: #fff;
+	transition: all 0.1s linear;
+}
+
+.br {
+	@apply border border-red-600;
+}
+
+.middle {
+	@apply flex items-center;
+}
+
+.text {
+	@apply font-semibold text-lg text-gray-500;
+
+	&.cap {
+		@apply capitalize;
+	}
+}
+
+.centered {
+	@apply flex items-center justify-center;
+}
+
+.body {
+	@apply text-black font-normal text-[18px];
+}
+
+.big-body {
+	@apply text-black font-semibold text-[24px];
+}
+//
+
+.stack {
+	@apply flex flex-col;
+
+	&-sm {
+		@apply space-y-2;
+	}
+
+	&-md {
+		@apply space-y-3;
+	}
+
+	&-lg {
+		@apply space-y-4;
+	}
+
+	&-xl {
+		@apply space-y-6;
+	}
+}

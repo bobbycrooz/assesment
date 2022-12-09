@@ -1,0 +1,60 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+
+		"jsx": "preserve",
+
+		"baseUrl": "./",
+
+		"paths": {
+			"@components/*": ["src/interface/components/*", "components/*"],
+			"@components": ["src/interface/components", "components"],
+			"@modules/*": ["src/modules/*"],
+			"@hooks/*": ["src/hooks/*"],
+			"@redux/*": ["src/redux/*", "redux/*"],
+			"@slice/*": ["src/redux/features/*", "redux/features/*"],
+			"@redux": ["src/redux", "redux"],
+			"@contexts/*": ["src/contexts/*", "contexts"],
+			"@types/*": ["src/common/types/*"],
+
+			// utiils
+			"@utils/*": ["src/utils/*"],
+			"@utils": ["src/utils"],
+
+			"@routes/*": ["src/common/routes/*"],
+			"@constants/*": ["src/common/constants/*"],
+			"@assets/*": ["/assets/*"],
+			"@category-assets/*": ["src/assets/images/category/*"],
+
+			"@styles/*": ["src/assets/styles/*", "styles/*"],
+
+			"@styles": ["src/assets/styles"],
+			"@axios/*": ["src/axios/apiCalls/*"],
+
+			"@types": ["types"],
+			"@constants": ["constants"],
+
+			"@images/*" :["src/assets/images/*"],
+			"@layouts/*" :["src/interface/layouts/*"],
+
+			"@widget" :["src/interface/widget"],
+			"@widget/*" :["src/interface/widget/*"],
+
+			"@sections/*" :["src/interface/Sections/*"]
+		},
+		"incremental": true
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/assets/styles/globalStyles.js", "src/interface/components/Carousel copy.js"],
+	"exclude": ["node_modules"]
+}

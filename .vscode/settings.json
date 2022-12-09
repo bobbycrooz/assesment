@@ -1,0 +1,15 @@
+{
+    "cSpell.words": [
+        "coinlist",
+        "tanstack"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#0F3334",
+        "titleBar.activeBackground": "#144748",
+        "titleBar.activeForeground": "#F3FBFC"
+    },
+    "prettier.configPath": ".prettierrc",
+    "prettier.useTabs": true,
+    "prettier.tabWidth": 6,
+    "scss.lint.unknownAtRules": "ignore"
+}

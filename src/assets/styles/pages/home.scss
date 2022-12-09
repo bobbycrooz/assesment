@@ -1,0 +1,9 @@
+.home {
+	.hero_section {
+		height: 400px;
+		background-image: url(../../images/hero_bg.png);
+		background-size: cover;
+		// @apply bg-dark-blue;
+		@apply middle;
+	}
+}
