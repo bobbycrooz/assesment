@@ -25,7 +25,7 @@ function fmtResponse(responseData: any, error: boolean) {
 }
 
 const service = axios.create({
-	baseURL: `http://www.omdbapi.com`
+	baseURL: `https://www.omdbapi.com`
 	// headers: {
 	// 	'X-API-KEY': '95e03ddd3572374c5a61d596e0eafffa',
 	// 	'iden-unique_key': 'quadraple-and-hello-edfojoidfj'
