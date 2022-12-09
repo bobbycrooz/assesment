@@ -1,23 +1,15 @@
 import type { NextPage } from 'next';
-// import Head from 'next/head';
-import Image from 'next/image';
 import SEO from 'src/interface/components/SEO';
-import LogoAnimate from '@images/Logo.svg';
-import arrowDown from '@images/arrow-down.svg';
-import arrowRight from '@images/arrow-right.svg';
-import green from '@images/green.svg';
-import { useAuth } from '@contexts/auth-context';
-import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { moviesByMovieType, moviesBySeries } from '@axios/admin';
+import { moviesByMovieType, moviesBySeries, moviesBySeriesBy2 } from '@axios/admin';
 import { useEffect, useState } from 'react';
 
 const Home = (props: { isMobile: any }) => {
 	const [movies, setMovies] = useState();
+	const [movies2, setMovies2] = useState();
 	const [searchParam, setSearchParam] = useState('');
 
 	async function getMovies() {
@@ -27,6 +19,16 @@ const Home = (props: { isMobile: any }) => {
 		if (resp.search) {
 			// @ts-ignore
 			setMovies(resp.search.Search);
+		}
+	}
+
+	async function getMoviesBy2() {
+		// @ts-ignore
+		const resp = await moviesBySeriesBy2();
+		// @ts-ignore
+		if (resp.search) {
+			// @ts-ignore
+			setMovies2(resp.search.Search);
 		}
 	}
 
@@ -48,6 +50,7 @@ const Home = (props: { isMobile: any }) => {
 
 	useEffect(() => {
 		getMovies();
+		getMoviesBy2();
 	}, []);
 	// @ts-ignore
 
@@ -62,7 +65,7 @@ const Home = (props: { isMobile: any }) => {
 			</div>
 
 			<div className="hero_section p-11">
-				<div className="hero_section_contentn justify-center md:justify-start">
+				<div className=" fadeIn hero_section_contentn justify-center md:justify-start">
 					<h1 className="hero_title font-dm-sans  fond-bold text-[45px] text-white text-center md:text-left md:w-[200px]">
 						Watch something incredible.
 					</h1>
@@ -90,7 +93,10 @@ const Home = (props: { isMobile: any }) => {
 							<h1>fetching movie list ..</h1>
 						</div>
 					) : (
-						<MovieListCarousel movies={movies} categoryName="Movies by series" />
+						<>
+							<MovieListCarousel movies={movies} categoryName="Movies by series" />
+							<MovieListCarousel movies={movies2} delay categoryName="Movies by episode" />
+						</>
 					)}
 				</div>
 			</main>
@@ -98,9 +104,9 @@ const Home = (props: { isMobile: any }) => {
 	);
 };
 
-function MovieListCarousel({ categoryName, movies }: { categoryName?: Name; movies: any }) {
+function MovieListCarousel({ categoryName, movies, delay }: { categoryName?: Name; movies: any; delay?: boolean }) {
 	return (
-		<div className="movie_category_component  stack-md">
+		<div className="movie_category_component my-6 stack-md">
 			<h1 className="title text-2xl font-dm-sans font-medium">{categoryName}</h1>
 
 			<div className="slider_container h-[300px] ">
@@ -125,10 +131,12 @@ function MovieListCarousel({ categoryName, movies }: { categoryName?: Name; movi
 					modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
 					// pagination={{ clickable: true }}
 					loop={true}
-					// autoplay={{
-					// 	delay: 2000,
-					// 	disableOnInteraction: false
-					// }}
+					autoplay={
+						delay && {
+							delay: 2000,
+							disableOnInteraction: false
+						}
+					}
 				>
 					{movies?.map((item: { Poster: string | undefined }, index: any) => (
 						<SwiperSlide key={`${index} -swiper one`} className="">

@@ -9,6 +9,14 @@ export function moviesBySeries() {
 	});
 }
 
+export function moviesBySeriesBy2() {
+	// console.log('look i got here');
+	return service({
+		url: '/?apikey=e26be1f2&s=episodes',
+		method: 'get'
+	});
+}
+
 export function moviesByMovieType(data: string) {
 	// console.log('look i got here');
 	return service({
