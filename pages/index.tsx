@@ -55,8 +55,8 @@ const Home = (props: { isMobile: any }) => {
 		<div className="home">
 			<SEO title="home" />
 
-			<div className="navba h-20 bg-pri text-white middle justify-center md:justify-start pl-11">
-				<div className="logo_box border border-white p-2">
+			<div className="navba h-20 bg-pri text-white middle justify-center md:justify-start md:pl-11">
+				<div className="logo_box border border-white p-2 br">
 					<h1 className="title capitalize">mytest app</h1>
 				</div>
 			</div>
